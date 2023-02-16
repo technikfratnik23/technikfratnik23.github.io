@@ -1,0 +1,110 @@
+<html>
+	<head>
+	<title>Informatyka</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	</head>
+	<style>
+    .rainbow {
+      background-image: linear-gradient(to right, red, orange, yellow, green, blue, indigo, violet);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+		.gradient-text1 {
+		background-image: linear-gradient(to right, red, orange);
+		-webkit-background-clip: text;
+		-webkit-text-fill-color: transparent;
+		}
+	</style>
+	
+	<body style="background-color:silver; font-family:Verdana;">
+	<h1 style="font-size:60px; text-align:center; border:3px solid Black; margin:15px">Dzien Dobry</h1>
+	
+	
+	<b> <p style="color:black; font-family:Tahoma; text-align:center; font-size:30vws; margin:5px">IQ grabber: <span id="random-number"></span></p> </b>
+	<b> <p style="color:black; font-family:Tahoma; text-align:center; font-size:30vws; margin:5px"><span id="IQmessage"></span></p> </b>
+    <script>
+    function getRandomNumber() {
+		let randomNumber = Math.floor(Math.random() * 100) + 1;
+		if (randomNumber > 50) {
+			randomNumber -= Math.floor(Math.random() * 26) + 1;
+			if (randomNumber > 50) {
+			document.getElementById('IQmessage').innerHTML = 'Decent!';
+			}
+		}
+			return randomNumber;
+	}
+    let randomNumber = getRandomNumber();
+    document.getElementById('random-number').innerHTML = randomNumber;
+    </script>
+	
+	
+	<b> <p style="text-align:center; margin:5px">Zmarnowales tyle czasu z swojego zycia: <span id="timer"></span></p> </b>
+    <script>
+      function startTimer() {
+        let start = Date.now();  // Get the current time in milliseconds
+
+        setInterval(function() {
+          let elapsedTime = Date.now() - start;  // Calculate the elapsed time
+          let seconds = Math.floor(elapsedTime / 1000) % 60;  // Convert elapsed time to seconds and reset to 0 when it reaches 60
+          let minutes = Math.floor(elapsedTime / 60000) % 60;  // Convert seconds to minutes and reset to 0 when it reaches 60
+          let hours = Math.floor(elapsedTime / 3600000);  // Convert minutes to hours
+
+          // Display the elapsed time in the format HH:MM:SS
+          document.getElementById('timer').innerHTML = `${hours}h | ${minutes}m | ${seconds}s`;
+        }, 1000);  // Update the timer every 1000 milliseconds (1 second)
+      }
+
+      window.onload = startTimer;  // Start the timer when the page loads
+    </script>
+	
+	<b> <p id="text" style="font-family:Tahoma; font-size:160%; text-align:center; margin:5px; text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;">Ciapek jest czarny</p> </b>
+	<script>
+      // Set the initial hue value
+      var hue = 0;
+
+      // Set the interval for updating the color
+      setInterval(function() {
+        // Increment the hue value
+        hue += 1;
+
+        // Convert the hue value to an RGB color
+        var color = "rgb(" + (Math.sin(hue * Math.PI / 180) * 127 + 128) + "," + (Math.sin((hue + 120) * Math.PI / 180) * 127 + 128) + "," + (Math.sin((hue + 240) * Math.PI / 180) * 127 + 128) + ")";
+
+        // Update the color of the text
+        document.getElementById("text").style.color = color;
+      }, 25);
+    </script>
+	<b> <p style="text-align:center; margin:5px">
+      <script>
+        // Read the contents of the file into a string
+        var rawFile = new XMLHttpRequest();
+        rawFile.open("GET", "motd.txt", false);
+        rawFile.onreadystatechange = function () {
+          if (rawFile.readyState === 4) {
+            if (rawFile.status === 200 || rawFile.status == 0) {
+              var allText = rawFile.responseText;
+
+              // Split the string into an array of messages
+              var messages = allText.split("/");
+
+              // Choose a random message
+              var index = Math.floor(Math.random() * messages.length);
+              var message = messages[index];
+
+              // Display the message in the paragraph element
+              document.write(message);
+            }
+          }
+        }
+        rawFile.send(null);
+      </script>
+    </p> </b>
+	<b> <a style="color:#00731f; font-family:Fixedsys; text-align:center; display:block; text-decoration: none; margin:5px" href="Images/cat2.gif">FREE ROBUX</a> </b>
+	<!-- <a href="Images/cat2.gif">View Image</a> -->
+	
+	
+	<img src="Images/robux.jpg" alt="Free Robux" style="float:float;width:600px;height:380px;">
+	<img src="Images/1.jpg" alt="wariat" style="float:right;width:600px;height:380px;">
+</body>
+	
+</html>

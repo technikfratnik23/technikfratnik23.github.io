@@ -43,3 +43,6 @@ jobs:
         uses: actions/deploy-pages@v2
       - name: Cache
         uses: actions/cache@v1.2.1
+        with:
+          path: '.'
+          key: ${{ runner.os }}-${{ hashFiles('**/lockfiles') }}
